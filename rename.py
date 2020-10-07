@@ -2,13 +2,11 @@ import os
 count = 0 
 a = os.getcwd()
 files = os.listdir(a)
-for line in files:
+FORMAT = ['.jpg', '.JPG','.jpeg',".JPEG"] # 想要更改的文件的格式
+image_names = [name for name in os.listdir(a) for item in FORMAT if os.path.splitext(name)[1] == item] # 想要更改的文件组成的列表
+for line in image_names:
     print(line)
-    if line == "1.TXT" or line == 'a.bat' or line == 'AirPhotos.cache':
-        continue
-    else:
-
-
+    
         path = a+"\\"+line
         print(path)
         filelist = os.listdir(path) #该文件夹下所有的文件（包括文件夹）
@@ -21,7 +19,7 @@ for line in files:
                 continue
             filename=os.path.splitext(file)[0]   #文件名
             filetype=os.path.splitext(file)[1]   #文件扩展名
-            Newdir=os.path.join(path,str(count)+line.zfill(5)+filetype)  #用字符串函数zfill 以0补全所需位数
+            Newdir=os.path.join(path,str(count).zfill(5)+line+filetype)  #用字符串函数zfill 以0从前补全所需位数
             os.rename(Olddir,Newdir)#重命名
             count+=1
     
