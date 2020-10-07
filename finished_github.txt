@@ -1,0 +1,2 @@
+git fetch --all
+git reset --hard origin/master  //放弃本地修改
