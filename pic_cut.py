@@ -2,7 +2,7 @@
 """
 Created on Sat Jun 27 21:12:23 2020
 
-@author: QGX
+@author: Aierlma
 """
 
 from PIL import Image
