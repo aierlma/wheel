@@ -12,15 +12,15 @@ d = []
 for i in lst:
     d.append(b[i-1])#抽取所要的文件名
 print(d)
-path1 = "E:\\MC\\manga\\合集\\单行本"#查询地址1
+path1 = "E:\\"#查询地址1
 file1 = os.listdir(path1)#path1下的所有文件
-path2 = "E:\\MC\\manga\\合集\\散本"#查询地址2
+path2 = "E:\\"#查询地址2
 file2 = os.listdir(path2)
 for _ in d:
     if _ in file1:
         dire = path1+"\\"+_
         source_path = dire
-        target_path = 'E:\\MC\\manga\\draw'+'\\'+_#输出地址
+        target_path = 'E:'+'\\'+_#输出地址
         if os.path.exists(target_path):#判断目标路径是否存在，存在则跳过
             continue
         shutil.copytree(source_path, target_path)#剪切操作记得粘贴回去
@@ -29,7 +29,7 @@ for _ in d:
     elif _ in file2:
         dire = path2+"\\"+_
         source_path = dire
-        target_path = 'E:\\MC\\manga\\draw2'+'\\'+_#输出地址
+        target_path = 'E:\\2'+'\\'+_#输出地址
         if os.path.exists(target_path):#判断目标路径是否存在，存在则跳过
             continue
         shutil.copytree(source_path, target_path)#剪切操作记得粘贴回去
