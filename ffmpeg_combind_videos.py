@@ -2,7 +2,7 @@
 """
 Created on Thu Jun 25 13:20:47 2020
 
-@author: QGX
+@author: Aierlma
 """
 
 import os
@@ -11,9 +11,6 @@ files = os.listdir(a)#取得本目录下所有文件，生成一个列表
 print(files)
 file1 = open(a+"\\temp.txt","w")
 
-
-
-    
 for line in files:
     filetype=os.path.splitext(line)[1]
     print(filetype)
