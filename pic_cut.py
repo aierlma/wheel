@@ -25,3 +25,4 @@ for parent, dirnames, filenames in os.walk(rootdir):#遍历每一张图片
         box1 = (83, 399, 638, 465)#设置左边界、上边界、右边界、下边界的位置坐标像素，通过画图工具得出
         image1 = img.crop(box1) # 图像裁剪
         image1.save(rootdir +'//9'+filename) #存储裁剪得到的图像
+        #test
