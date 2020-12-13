@@ -34,7 +34,7 @@ def gbk_2_utf8(filename,out_enc="UTF-8"):
     except IOError as err:
         print("I/O error:{0}".format(err))
 
-dir = os.getcwd()
+dir = os.getcwd()                                  #改成你要的地址
 f = open(file = dir+"\\"+'f.txt',mode = 'w',encoding='utf-8')
 for root, dirs, files in os.walk(dir,topdown=False):
     for name in files :
