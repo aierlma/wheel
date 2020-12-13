@@ -46,7 +46,7 @@ for root, dirs, files in os.walk(dir,topdown=False):
         try :                           #尝试
             gbk_2_utf8(file)
         except :
-            f.write(name)               #记录出错文件
+            f.write(name+'\n')               #记录出错文件
             continue                    #出错就跳过
         
 f.close()
