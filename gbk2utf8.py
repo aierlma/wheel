@@ -36,7 +36,7 @@ def gbk_2_utf8(filename,out_enc="UTF-8"):
 
 dir = os.getcwd()                                  #改成你要的地址
 f = open(file = dir+"\\"+'f.txt',mode = 'w',encoding='utf-8')
-for root, dirs, files in os.walk(dir,topdown=False):
+for root, dirs, files in os.walk(dir,topdown=False):#游走dir目录和所有层级子目录。topdown表示是否先排序子文件夹
     for name in files :
         file = os.path.join(root, name)        #获取dir目录和所有层级子目录的所有绝对路径文件名
         filetype=os.path.splitext(file)[1]   #文件扩展名

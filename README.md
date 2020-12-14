@@ -16,5 +16,5 @@
 - mp42wav.bat可以提取mp4视频音频成wav
 - vid_cut2aud.bat可以直接把视频分割定时成音频 参数同vid_separate.bat
 - pic_cut_combind.py把切割和合并两步放在一起
-- fing_and_draw.py依赖于a.bat生成的1.txt或者直接用os.listdir()获取文件名。然后输入目的序号，会把需要的文件单独复制出来。
+- fing_and_draw.py依赖于a.bat生成的1.txt或者直接用os.listdir()获取文件名。然后输入目的序号，会把需要的文件单独复制出来。会生成两个txt，f2.txt记录了未成功复制的，f3.txt记录了复制文件的原路径
 - gbk2utf8.py是把编码为非utf-8的转变为utf8编码
