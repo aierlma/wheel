@@ -13,7 +13,7 @@ print(IMAGES_PATH)
 IMAGES_FORMAT = ['.jpg', '.JPG','.jpeg',".JPEG"] # 图片格式
 IMAGE_SIZE1 = 480 # 每张小图片的纵高
 IMAGE_SIZE2 = int#每张小图片的横长
-IMAGE_ROW = 20 # 图片间隔，也就是合并成一张图后，一共有几行
+IMAGE_ROW = 30 # 图片间隔，也就是合并成一张图后，一共有几行
 IMAGE_COLUMN = 1 # 图片间隔，也就是合并成一张图后，一共有几列
 
 # 获取图片集地址下的所有图片名称

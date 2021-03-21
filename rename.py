@@ -6,7 +6,9 @@ FORMAT = ['.jpg', '.JPG','.jpeg',".JPEG"] # 想要更改的文件的格式
 image_names = [name for name in os.listdir(a) for item in FORMAT if os.path.splitext(name)[1] == item] # 想要更改的文件组成的列表
 for line in image_names:
     print(line)
-    
+    if line == "1.TXT" or line == 'a.bat' or line == 'AirPhotos.cache':
+        continue
+    else:    
         path = a+"\\"+line
         print(path)
         filelist = os.listdir(path) #该文件夹下所有的文件（包括文件夹）
