@@ -12,7 +12,7 @@ import chardet
 def guess_code(file):
     '''
     Used to guess encoding format.
-    chardet is needed.
+    import chardet is needed.
 
     Parameters
     ----------
@@ -39,3 +39,53 @@ for root, dirs, files in os.walk(os.getcwd()):          #游走文件夹，获�
         filename = os.path.splitext(i)[0]
         directory = os.path.join(root,i)
 
+def base64toimg(b64,format):
+    '''
+    Transform base64 to image
+    import base64 is needed
+
+    Parameters
+    ----------
+    b64 : string
+        That is the base64 code
+    format:string
+        That is the img format(like png,jpg,etc.)
+
+
+    Returns
+    -------
+    'succesful'
+    '''
+    img_str = str(b64)
+    img_data = base64.b64decode(img_str)
+# 注意：如果是"data:image/jpg:base64,"，那你保存的就要以png格式，如果是"data:image/png:base64,"那你保存的时候就以jpg格式。
+    with open('001.'+str(format), 'wb') as f:
+        f.write(img_data)
+    return 'succesful'
+
+
+def get_baidu_access_token(AK,SK):
+    '''
+    Used to get baidu access token
+    import requests is needed
+
+    Parameters
+    ----------
+    AK : string
+        That is API key
+    SK : string
+        That is secret key
+
+
+    Returns
+    -------
+    return a list 
+    the first element is access_token 
+    2nd is response.json()
+    you can get output like get_baidu_access_token(AK,SK)[0]
+    '''
+    # client_id 为官网获取的AK， client_secret 为官网获取的SK
+    host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id='+str(AK)+'&client_secret='+str(SK)
+    response = requests.get(host)
+    access_token = response.json()['access_token']
+    return [access_token,response.json()]
