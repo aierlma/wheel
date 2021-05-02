@@ -89,3 +89,13 @@ def get_baidu_access_token(AK,SK):
     response = requests.get(host)
     access_token = response.json()['access_token']
     return [access_token,response.json()]
+
+import PIL.Image as Image
+import os 
+
+IMAGES_FORMAT = ['.jpg', '.JPG','.jpeg',".JPEG"] # 图片格式
+image_names = [name for name in os.listdir(os.getcwd()) for item in IMAGES_FORMAT if
+os.path.splitext(name)[1] == item]
+example = Image.open(image_names[0])
+wide , height = example.size
+#this is used to get wide and height of a image

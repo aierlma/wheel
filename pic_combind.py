@@ -11,14 +11,17 @@ import shutil
 IMAGES_PATH = os.getcwd() # 图片集地址
 print(IMAGES_PATH)
 IMAGES_FORMAT = ['.jpg', '.JPG','.jpeg',".JPEG"] # 图片格式
-IMAGE_SIZE1 = 480 # 每张小图片的纵高
-IMAGE_SIZE2 = int#每张小图片的横长
-IMAGE_ROW = 30 # 图片间隔，也就是合并成一张图后，一共有几行
-IMAGE_COLUMN = 1 # 图片间隔，也就是合并成一张图后，一共有几列
-
 # 获取图片集地址下的所有图片名称
 image_names = [name for name in os.listdir(IMAGES_PATH) for item in IMAGES_FORMAT if
 os.path.splitext(name)[1] == item]
+example = Image.open(image_names[0])
+wide , height = example.size
+IMAGE_SIZE1 = height # 每张小图片的纵高
+IMAGE_SIZE2 = wide#每张小图片的横长
+IMAGE_ROW = 30 # 图片间隔，也就是合并成一张图后，一共有几行
+IMAGE_COLUMN = 1 # 图片间隔，也就是合并成一张图后，一共有几列
+
+
 Total =   len(image_names)   #一共要合并多少张
 circulation = Total //IMAGE_ROW
 rest = Total %IMAGE_ROW
