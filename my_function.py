@@ -99,3 +99,8 @@ os.path.splitext(name)[1] == item]
 example = Image.open(image_names[0])
 wide , height = example.size
 #this is used to get wide and height of a image
+
+'''
+this is used to sort file like 1,2,3 not 1,10,111
+'''
+file.sort(key = lambda x: int(x[:-4]))        #后面的-4指代文件后缀名
