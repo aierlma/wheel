@@ -104,3 +104,7 @@ wide , height = example.size
 this is used to sort file like 1,2,3 not 1,10,111
 '''
 file.sort(key = lambda x: int(x[:-4]))        #后面的-4指代文件后缀名
+
+
+result = re.search(r'[A-Za-z]{2,5}-[0-9]{3}', i, flags=0)        #可用来匹配番号
+result.group()             #输出匹配结果
