@@ -25,6 +25,7 @@ sub_FORMAT = ['.srt', '.ass','.ssa',".vtt",'smi'] # 图片格式
 sublst = [name for name in os.listdir('F:\OneDrive - aierlmalee\MC\sub\AVsub') for item in sub_FORMAT if
 os.path.splitext(name)[1] == item]                                      #获取字幕文件形成列表
 
+sublst1 = [sub.lower() for sub in sublst]
 
 
 for i in vidslst1:
@@ -37,12 +38,15 @@ for i in vidslst1:
         fanhao = re.search(r'[A-Za-z]{2,5}-[0-9]{3}',filename,flags=0).group()  #尝试正则匹配番号，意思是匹配大小写字母2到5次，再匹配短横杠-再匹配数字3次
     except:
         continue
+    fanhao = fanhao.lower()
 
-
-    for j in sublst:
-        if str(fanhao) in str(j):
-            oldpath = 'F:\\OneDrive - aierlmalee\\MC\\sub\\AVsub'+'\\'+str(j)
+    for j in sublst1:
+        
+        if fanhao in j:
+            
+            oldpath = 'F:\\OneDrive - aierlmalee\\MC\\sub\\AVsub'+'\\'+str(sublst[sublst1.index(j)])
             print(oldpath,newpath)
             shutil.copy(oldpath,newpath)
             print("finish1")
+
 
