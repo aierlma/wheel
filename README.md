@@ -23,3 +23,4 @@
 - delay_sub.py延后该文件夹所有字幕的时间
 - subfinder.py可以根据已有的字幕文件找工作文件夹下的影片是否具有外挂字幕，有则把已有字幕文件复制到相应影片文件夹里
 - fanhao_get.py可以从javbus获取页面里的番号保存到工作路径下的result.txt
+- 搜索字幕.py从javbus获取影片是否有字幕

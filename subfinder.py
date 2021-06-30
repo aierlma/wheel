@@ -38,7 +38,7 @@ for i in vidslst1:
         fanhao = re.search(r'[A-Za-z]{2,5}-[0-9]{3}',filename,flags=0).group()  #尝试正则匹配番号，意思是匹配大小写字母2到5次，再匹配短横杠-再匹配数字3次
     except:
         continue
-    fanhao = fanhao.lower()
+    fanhao = fanhao.lower()                                          #小写
 
     for j in sublst1:
         
