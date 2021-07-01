@@ -25,3 +25,4 @@
 - fanhao_get.py可以从javbus获取页面里的番号保存到工作路径下的result.txt
 - 搜索字幕.py从javbus获取影片是否有字幕
 - danmu_optimise.py可以把低于1/4屏幕的弹幕清除掉。也可以把它们改成高于1/4屏幕的
+- split_big_audio_into_small.py可以把长视频或音频变成顺序的短视频或音频，通过导出一个bat利用ffmpeg完成
