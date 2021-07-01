@@ -16,5 +16,5 @@ print(file)
 for i in range(len(file)):
     
     subs = pysrt.open(file[i])
-    subs.shift(minutes=2*i,seconds=59*i)
+    subs.shift(minutes=2*i,seconds=58*i)
     subs.save(str(i+1)+'new.srt', encoding='utf-8')
