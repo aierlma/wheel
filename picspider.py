@@ -9,6 +9,7 @@ import requests
 import time
 import os
 import random
+import re
 '''保存路径'''
 path = r'./'
 
@@ -21,7 +22,7 @@ proxies = {
 
 '''目标网址'''
 def url(alt):
-    url = 'https://static7.porn-images-xxx.com/upload/20200724/830/849238/%s.jpg'%str(alt)
+    url = 'http://book.ucdrs.superlib.net/search?channel=search&gtag=&sw=%E9%82%AA%E7%81%AB&ecode=utf-8&Field=all&Sort=&adminid=&btype=&seb=0&pid=0&year=&sectyear=&showc=0&fenleiID=&searchtype=&authid=0&exp=0&expertsw=&Pages='+str(alt)
     return url
 '''设置请求头'''
 def headers():
@@ -43,11 +44,17 @@ if __name__=='__main__':
     if os.path.exists(path) == False: # 没有就创建
         os.mkdir(path)
     try:
-        for i in range(47):
+        for i in range(1,33):
+            response = requests.get(url(i),headers=headers(), proxies=proxies)# 使用headers避免访问受限
+            txt = response.text
+            t = re.findall(r'(?<=title" value=").*?(?=">)',txt,flags=0)
+            print(t,i)
+        
+        '''for i in range(47):
             response = requests.get(url(i+1),headers=headers(), proxies=proxies)# 使用headers避免访问受限
             data = response.content
             with open(path+r'/%s.jpg'%str(i+1).zfill(2), 'wb') as f:
                 f.write(data)
-            time.sleep(1)                #设置时间防止断联
+            time.sleep(1)   '''             #设置时间防止断联
     except requests.exceptions.ConnectionError as e:
         print('Error', e.args)
