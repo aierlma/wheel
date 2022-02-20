@@ -6,6 +6,7 @@ Created on Thu Jun 25 13:20:47 2020
 """
 
 import os
+import re
 
 
 def writeneedvids(path = os.getcwd()):
@@ -18,7 +19,7 @@ def writeneedvids(path = os.getcwd()):
 
 
 def writeffmpeg(path = os.getcwd(), type = '.mp4'):
-    name = os.path.basename(path)
+    name = re.sub(r'\s', '-', os.path.basename(path))
     with open(os.path.join(path, 'f.bat'), 'w', encoding='utf-8') as f:
         f.write(f"ffmpeg -f concat -safe 0 -i temp.txt -c copy {name}{type}")
 
