@@ -23,7 +23,7 @@ class File:
 
     def init(self):
         '''
-        初始化函数，应该保证一个文件的属性改动了之后调用该函数
+        初始化函数，应该保证一个文件的属性改动的最后调用该函数
         Returns
         -------
 
@@ -33,7 +33,17 @@ class File:
         self.name = os.path.splitext(self.fullname)[0]  # 文件名
         self.type = os.path.splitext(self.fullname)[1]  # 文件扩展名
 
-    def delete(self, particular_string):
+    def keeplog(self):
+        '''
+        日志函数，应保证一个文件改动后立刻调用该函数
+        Returns
+        -------
+
+        '''
+        with open(os.path.join(self.path, 'log.txt'), 'a', encoding='utf-8') as log:
+            log.write(self.fullname+'-->'+self.newfullname+'\n')
+
+    def delete(self, particular_string=''):
         '''
         delet文件名中特定字符串，使用正则表达式
         需要import re
@@ -48,6 +58,7 @@ class File:
             self.newfullname = self.fullname.replace(ps, '')
             self.newdir = os.path.join(self.path, self.newfullname)
             os.rename(self.dir, self.newdir)
+            self.keeplog()
             self.init()
 
         except:
@@ -72,6 +83,7 @@ class File:
             self.newdir = os.path.join(self.path, self.newfullname)
             print(self.dir, self.newdir)
             os.rename(self.dir, self.newdir)
+            self.keeplog()
             self.init()
         except:
             pass
@@ -87,13 +99,13 @@ class File:
         '''
 
         try:
-            num = re.search(r'(?<!\d)[0-9]{1,2}(?!\d)', self.name, flags=0).group()
-            self.newfullname = str(num).zfill(2)+re.sub(r'(?<!\d)[0-9]{1,2}(?!\d)', '', self.name)+self.type
+            num = re.search(r'(?<=\s)[0-9]{1,2}(?!\d)', self.name, flags=0).group()
+            self.newfullname = str(num).zfill(2)+re.sub(r'(?<=\s)[0-9]{1,2}(?!\d)', '', self.name)+self.type
             self.newdir = os.path.join(self.path, self.newfullname)
             os.rename(self.dir, self.newdir)
+            self.keeplog()
             self.init()
         except :
-            print("pss")
             pass
 
 def getparlist(path):
@@ -111,7 +123,7 @@ def getparlist(path):
     files = [file for file in os.listdir(path) for item in FORMAT if os.path.splitext(file)[1] == item]
     return files
 
-def work(name, path, dele):
+def work(name, path, dele=''):
     '''
     调用File类，运行删除，w2n，自动格式化等任务
     :param name: 文件名（包含后缀）
@@ -136,12 +148,13 @@ def main():
     '''
     path = r"E:\Downloads\hypnolust"
     f = os.listdir(path)
-
-    for i in f:
-        dir = os.path.join(path, i)
-        if os.path.isdir(dir):    # 判断是否为文件夹
-            for j in getparlist(dir):
-                work(j, dir, r'[0-9]{1,3}\s(min)')
+    for i in getparlist(r'E:\Downloads\hypnolust\stormy rose'):
+        work(i, r'E:\Downloads\hypnolust\stormy rose')
+    # for i in f:
+    #     dir = os.path.join(path, i)
+    #     if os.path.isdir(dir):    # 判断是否为文件夹
+    #         for j in getparlist(dir):
+    #             work(j, dir, r'[0-9]{1,3}\s(min)')
 
 if __name__ == '__main__':
     main()
