@@ -28,3 +28,4 @@
 - split_big_audio_into_small.py可以把长视频或音频变成顺序的短视频或音频，通过导出一个bat利用ffmpeg完成
 - picspider.py是我的第一个爬虫脚本，可以爬取网页图片并保存
 - mp42mp3(keep_file_name).bat提取当前目录下所有mp4的音频成mp3，保留原文件名
+- file_rename.py可以按照特定目的对文件重命名

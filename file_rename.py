@@ -22,6 +22,12 @@ class File:
         self.fullname = fullname
 
     def init(self):
+        '''
+        初始化函数，应该保证一个文件的属性改动了之后调用该函数
+        Returns
+        -------
+
+        '''
         self.fullname = self.newfullname
         self.dir = self.newdir
         self.name = os.path.splitext(self.fullname)[0]  # 文件名
@@ -29,6 +35,7 @@ class File:
 
     def delete(self, particular_string):
         '''
+        delet文件名中特定字符串，使用正则表达式
         需要import re
         import os
       :param particular_string:输入正则表达式
@@ -75,6 +82,7 @@ class File:
     def autoformat(self):
         '''
         把数字放到文件最前面命名为两位数字
+        如'asdfg5.mp4'会改为'05asdfg.mp4'
         :return:
         '''
 
@@ -88,10 +96,24 @@ class File:
             print("pss")
             pass
 
+def getparlist(path):
+    '''
+    获得路径内特定文件类型组成的列表
+    Parameters
+    ----------
+    path 目的路径
+
+    Returns list
+    -------
+
+    '''
+    FORMAT = ['.wmv', '.mp4', '.mkv', ".avi", "flv"]  # 想要获取的文件的格式
+    files = [file for file in os.listdir(path) for item in FORMAT if os.path.splitext(file)[1] == item]
+    return files
 
 def work(name, path, dele):
     '''
-
+    调用File类，运行删除，w2n，自动格式化等任务
     :param name: 文件名（包含后缀）
     :param path: 文件路径
     :param dele: 欲删除的字符（正则表达式）
@@ -101,17 +123,24 @@ def work(name, path, dele):
     vid.delete(dele)
     vid.w2num()
     vid.autoformat()
-    writeneedvids(path)
-    writeffmpeg(path, gettype(path))
+    writeneedvids(path)  # 将需要的合并的视频放进txt
+    writeffmpeg(path, gettype(path))   #写下ffmpeg代码用来合并视频
 
 def main():
+    '''
+    针对一个文件夹之下有众多子文件夹的情况适用
+    进入每个子文件夹，将子文件夹中的每个文件进行按需要重命名
+    Returns
+    -------
+
+    '''
     path = r"E:\Downloads\hypnolust"
     f = os.listdir(path)
 
     for i in f:
         dir = os.path.join(path, i)
-        if os.path.isdir(dir):
-            for j in os.listdir(dir):
+        if os.path.isdir(dir):    # 判断是否为文件夹
+            for j in getparlist(dir):
                 work(j, dir, r'[0-9]{1,3}\s(min)')
 
 if __name__ == '__main__':
