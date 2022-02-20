@@ -6,25 +6,33 @@ Created on Thu Jun 25 13:20:47 2020
 """
 
 import os
-a = os.getcwd()
-files = os.listdir(a)#取得本目录下所有文件，生成一个列表
-print(files)
-file1 = open(a+"\\temp.txt","w")
 
-for line in files:
-    filetype=os.path.splitext(line)[1]
-    print(filetype)
-    line = "file" + " "+"'"+line+"'"
-    print(line)
-    if filetype != ".mp4":
-        continue
-    file1.write(line+"\n")
-    
-file1.close()
 
-f = open(a+"\\"+"g.txt","w")
-f.write("ffmpeg -f concat -i temp.txt -c copy out.mp4")
-f.close()
-olddir = a+"\\"+"g.txt"
-newdir = a+"\\"+"f.bat"
-os.rename(olddir,newdir)#重命名
+def writeneedvids(path = os.getcwd()):
+    FORMAT = ['.wmv', '.mp4', '.mkv', ".avi", "flv"]  # 想要更改的文件的格式
+    files = [file for file in os.listdir(path) for item in FORMAT if os.path.splitext(file)[1]==item]
+    with open(os.path.join(path, 'temp.txt'), 'w', encoding='utf-8') as tpf:
+        for line in files:
+            line1 = 'file' + ' '+"'"+line+"'"
+            tpf.write(line1 + "\n")
+
+
+def writeffmpeg(path = os.getcwd(), type = '.mp4'):
+    name = os.path.basename(path)
+    with open(os.path.join(path, 'f.bat'), 'w', encoding='utf-8') as f:
+        f.write(f"ffmpeg -f concat -safe 0 -i temp.txt -c copy {name}{type}")
+
+def gettype(path = os.getcwd()):
+    FORMAT = ['.wmv', '.mp4', '.mkv', ".avi", "flv"]  # 想要更改的文件的格式
+    files = [file for file in os.listdir(path) for item in FORMAT if os.path.splitext(file)[1] == item]
+    for i in files:
+        type = os.path.splitext(i)[1]
+    return type
+
+def main():
+    path = r'E:\Downloads\hypnolust\alexa'
+    writeneedvids(path)
+    writeffmpeg(path, gettype(path))
+
+if __name__ == '__main__':
+    main()

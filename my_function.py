@@ -108,3 +108,11 @@ file.sort(key = lambda x: int(x[:-4]))        #后面的-4指代文件后缀名
 
 result = re.search(r'[A-Za-z]{2,5}-[0-9]{3}', i, flags=0)        #可用来匹配番号
 result.group()             #输出匹配结果
+
+'''
+use f-string instead of %s
+'''
+
+animal = "dog"
+
+print(f"There is a {animal}.")
