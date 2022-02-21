@@ -100,7 +100,7 @@ class File:
 
         try:
             num = re.search(r'(?<=\s)[0-9]{1,2}(?!\d)', self.name, flags=0).group()
-            self.newfullname = str(num).zfill(2)+re.sub(r'(?<=\s)[0-9]{1,2}(?!\d)', '', self.name)+self.type
+            self.newfullname = str(num).zfill(2)+re.sub(r'(?<=\s)[0-9]{1,2}(?!\d)', '', self.name, count=1)+self.type
             self.newdir = os.path.join(self.path, self.newfullname)
             os.rename(self.dir, self.newdir)
             self.keeplog()
