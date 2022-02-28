@@ -10,7 +10,7 @@ import re
 
 
 def writeneedvids(path=os.getcwd()):
-    FORMAT = ['.wmv', '.mp4', '.mkv', ".avi", "flv"]  # 想要更改的文件的格式
+    FORMAT = ['.wmv', '.mp4', '.mkv', ".avi", ".flv"]  # 想要更改的文件的格式
     files = [file for file in os.listdir(path) for item in FORMAT if os.path.splitext(file)[1] == item]
     with open(os.path.join(path, 'temp.txt'), 'w', encoding='utf-8') as tpf:
         for line in files:
@@ -25,7 +25,7 @@ def writeffmpeg(path=os.getcwd(), type='.mp4'):
 
 
 def gettype(path=os.getcwd()):
-    FORMAT = ['.wmv', '.mp4', '.mkv', ".avi", "flv"]  # 想要更改的文件的格式
+    FORMAT = ['.wmv', '.mp4', '.mkv', ".avi", ".flv"]  # 想要更改的文件的格式
     files = [file for file in os.listdir(path) for item in FORMAT if os.path.splitext(file)[1] == item]
     for i in files:
         type = os.path.splitext(i)[1]
