@@ -9,7 +9,7 @@ import os
 import re
 
 
-def writeneedvids(path=os.getcwd(), format = [".flv"]):
+def writeneedvids(format = [".flv"], path=os.getcwd() ):
     '''
     可以把你需要合成的视频写在tempt.txt中
     Parameters
@@ -29,7 +29,7 @@ def writeneedvids(path=os.getcwd(), format = [".flv"]):
             tpf.write(line1 + "\n")
 
 
-def writeffmpeg(path=os.getcwd(), type='.mp4'):
+def writeffmpeg(type='.flv', path=os.getcwd() ):
     '''
     写一个合成视频的ffmpeg文件
     Parameters
@@ -46,7 +46,7 @@ def writeffmpeg(path=os.getcwd(), type='.mp4'):
         f.write(f"ffmpeg -f concat -safe 0 -i temp.txt -c copy {name}{type}")
 
 
-def gettype(path=os.getcwd(), format = ['.wmv', '.mp4', '.mkv', ".avi", ".flv"]):
+def gettype(format = ['.wmv', '.mp4', '.mkv', ".avi", ".flv"], path=os.getcwd() ):
     '''
 
     Parameters
@@ -64,11 +64,14 @@ def gettype(path=os.getcwd(), format = ['.wmv', '.mp4', '.mkv', ".avi", ".flv"])
         type = os.path.splitext(i)[1]
     return type
 
+def workwithpath(path):
+    writeneedvids(path) #   默认flv
+    writeffmpeg(gettype(['.flv'], path), path)   #默认flv
 
 def main():
     path = r'E:\Downloads'
-    writeneedvids(path)
-    writeffmpeg(path, gettype(path,['.flv']))
+    workwithpath()
+
 
 
 if __name__ == '__main__':
