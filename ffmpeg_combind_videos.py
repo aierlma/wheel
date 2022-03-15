@@ -29,7 +29,7 @@ def writeneedvids(format, path):
             tpf.write(line1 + "\n")
 
 
-def writeffmpeg(type, path ):
+def writeffmpeg(type, path):
     '''
     写一个合成视频的ffmpeg文件
     Parameters
@@ -71,7 +71,7 @@ def workwithpath(ty = [".flv"],path = os.getcwd()):
 def main():
     path = r'E:\Downloads'
     # ty = ['.wmv', '.mp4', '.mkv', ".avi", ".flv"]
-    # workwithpath([".flv"], path)
+    # workwithpath(ty = ['.xml'], path = path)
     workwithpath()
 
 
