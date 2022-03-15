@@ -108,7 +108,7 @@ class File:
         except :
             pass
 
-def getparlist(path):
+def getparlist(path, ty = ['.wmv', '.mp4', '.mkv', ".avi", "flv"] ):
     '''
     获得路径内特定文件类型组成的列表
     Parameters
@@ -119,7 +119,7 @@ def getparlist(path):
     -------
 
     '''
-    FORMAT = ['.wmv', '.mp4', '.mkv', ".avi", "flv"]  # 想要获取的文件的格式
+    FORMAT = ty  # 想要获取的文件的格式
     files = [file for file in os.listdir(path) for item in FORMAT if os.path.splitext(file)[1] == item]
     return files
 
@@ -146,15 +146,16 @@ def main():
     -------
 
     '''
-    path = r"E:\Downloads\hypnolust"
+    path = r"E:\Downloads"
+    path = os.getcwd()    #注释这一条与否决定你的工作路径
     f = os.listdir(path)
-    for i in getparlist(r'E:\Downloads\hypnolust\stormy rose'):
-        work(i, r'E:\Downloads\hypnolust\stormy rose')
-    # for i in f:
-    #     dir = os.path.join(path, i)
-    #     if os.path.isdir(dir):    # 判断是否为文件夹
-    #         for j in getparlist(dir):
-    #             work(j, dir, r'[0-9]{1,3}\s(min)')
+    # for i in getparlist(r'E:\Downloads\stormy rose'):    #针对单一文件夹适用
+    #     work(i, r'E:\Downloads\stormy rose')
+    for i in f:
+        dir = os.path.join(path, i)
+        if os.path.isdir(dir):    # 判断是否为文件夹
+            for j in getparlist(dir, ty = []):          #确保输入了你想要考虑的文件格式
+                work(j, dir, r'[0-9]{1,3}\s(min)')      #确保输入了你想要删除的字符串
 
 if __name__ == '__main__':
     main()
