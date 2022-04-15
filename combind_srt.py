@@ -7,8 +7,7 @@ Created on Mon May 17 08:32:21 2021
 import os 
 import pysrt
 
-file = [name for name in os.listdir(os.getcwd()) if
-os.path.splitext(name)[1] == '.srt']
+file = [name for name in os.listdir(os.getcwd()) if os.path.splitext(name)[1] == '.srt']
 file.sort(key = lambda x: int(x[:-7])) 
 print(file)
 sub = pysrt.open(file[0])
