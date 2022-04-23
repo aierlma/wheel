@@ -31,3 +31,4 @@
 - file_rename.py可以按照特定目的对文件重命名
 - spider2.py是加强版爬虫脚本
 - txtcombind.py用来合并txt
+- autocombind.py可以自动合成多个文件夹下的视频
