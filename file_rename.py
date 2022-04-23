@@ -108,6 +108,19 @@ class File:
         except :
             pass
 
+    def deletefile(self):
+        '''
+        满足特定条件时删除这个文件
+        Returns
+        -------
+
+        '''
+        if 'robot' in self.name.lower():
+            try:
+                os.remove(self.dir)
+            except :
+                pass
+
 def getparlist(path, ty = ['.wmv', '.mp4', '.mkv', ".avi", "flv"] ):
     '''
     获得路径内特定文件类型组成的列表
@@ -123,7 +136,7 @@ def getparlist(path, ty = ['.wmv', '.mp4', '.mkv', ".avi", "flv"] ):
     files = [file for file in os.listdir(path) for item in FORMAT if os.path.splitext(file)[1] == item]
     return files
 
-def work(name, path, dele=''):
+def work(name, path, dele='',format=['.wmv', '.mp4', '.mkv', ".avi", ".flv"]):
     '''
     调用File类，运行删除，w2n，自动格式化等任务
     :param name: 文件名（包含后缀）
@@ -135,9 +148,7 @@ def work(name, path, dele=''):
     vid.delete(dele)
     vid.w2num()
     vid.autoformat()
-    writeneedvids(path)  # 将需要的合并的视频放进txt
-    writeffmpeg(path, gettype(path))   #写下ffmpeg代码用来合并视频
-
+    vid.deletefile()
 def main():
     '''
     针对一个文件夹之下有众多子文件夹的情况适用
@@ -155,7 +166,8 @@ def main():
         dir = os.path.join(path, i)
         if os.path.isdir(dir):    # 判断是否为文件夹
             for j in getparlist(dir, ty = []):          #确保输入了你想要考虑的文件格式
-                work(j, dir, r'[0-9]{1,3}\s(min)')      #确保输入了你想要删除的字符串
-
+                work(j, dir, r'[0-9]{1,3}\s(min)')      #确保输入了你想要删除的字符串,和想要考虑的文件格式
+            writeneedvids(format=['.wmv', '.mp4', '.mkv', ".avi", ".flv"], path=dir)  # 将需要的合并的视频放进txt
+            writeffmpeg(type=gettype(format=['.wmv', '.mp4', '.mkv', ".avi", ".flv"], path=dir), path=dir)  # 写下ffmpeg代码用来合并视频
 if __name__ == '__main__':
     main()
