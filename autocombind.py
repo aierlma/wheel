@@ -24,7 +24,7 @@ def ffmpeginpython(type, path):
 def main():
     '''
     针对一个文件夹之下有众多子文件夹的情况适用
-    进入每个子文件夹，将子文件夹中的每个文件进行按需要重命名
+    进入每个子文件夹，将子文件夹中的每个文件进行按需要重命名并合并ffmpeg
     Returns
     -------
 
@@ -51,7 +51,7 @@ def main():
                 nam = re.sub(r'\s', '-', os.path.basename(dir))           #文件夹名字把空格改成-
                 type1 = gettype(format=['.wmv', '.mp4', '.mkv', ".avi", ".flv"],path = dir)  #dir下文件的后缀
                 for _ in file_dir:
-                    if _ != os.path.join(dir,nam+type1):             #删除除了合成视频的所有文件
+                    if _ != os.path.join(dir,nam+type1) and _ != "log.txt" :             #删除除了合成视频和log文件的所有文件
                         os.remove(_)
 
 

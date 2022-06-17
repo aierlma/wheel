@@ -14,7 +14,7 @@ import re
 path = r'./'
 
 '''设置socks5代理'''
-proxy = '127.0.0.1:15460'
+proxy = '127.0.0.1:15846'
 proxies = {
     'http': 'socks5://' + proxy,
     'https': 'socks5://' + proxy
