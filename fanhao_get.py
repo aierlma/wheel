@@ -21,7 +21,7 @@ proxies = {
 
 '''目标网址'''
 def url(alt):
-    url = 'https://www.javbus.com/search/npd/'+str(alt)
+    url = 'https://www.dmm.co.jp/digital/videoa/-/detail/=/cid=21npd0000'+str(alt)
     return url
 '''设置请求头'''
 def headers():
@@ -58,6 +58,8 @@ with open(x+'//result.txt',"w") as f:
 
     b = response.text
     print(b)
+    t = re.findall(r'(?<=<h1 id=\"title\" class=\"item fn\">).*?(?=<\/h1>)',b,flags=0)
+    print(t)
     # for i in range(4):
     #     response = requests.get(url(i+1), headers=headers())
     #     b = response.text

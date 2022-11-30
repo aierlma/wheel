@@ -32,3 +32,5 @@
 - spider2.py是加强版爬虫脚本
 - txtcombind.py用来合并txt
 - autocombind.py可以自动合成多个文件夹下的视频
+- graphing.py可以读取excel表格，并根据列做图及给出回归方程
+- argparse.py给出argparse module的使用方法，用来获取用户输入，与CLI有关
