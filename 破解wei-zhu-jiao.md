@@ -10,3 +10,4 @@
 但是您调用的地址是：
 https://app.teachermate.com.cn/xZ9Qr-1637671425716-第十五章 胎生哺乳恒温羊膜动物 哺乳纲.ppt?OSSAccessKeyId=LTAISFSejK8icILU&Expires=1639053028&Signature=rZogjGnBmOaHfoJis5M I53BGLc=
 ## 最后，输入地址即可。
+如果不行，那么建议重新登录微信。应该是微信的cookie过期了
