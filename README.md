@@ -36,3 +36,4 @@
 - argparse.py给出argparse module的使用方法，用来获取用户输入，与CLI有关
 - beautifulsoup_method.py给出bs4 module 的使用方法
 - delete_repeat.py 可以将来自faster-whisper-webui large-v3的转录字幕srt中的重复片段去掉，只需要将它们呢放在哦同一个目录下。注意，该脚本着重于对日语转录本进行预处理。处理后的结果会在同一个目录下生成，后缀加merged。就可以直接放在翻译机里翻译了。
+- export-emby-fav.py 作用是在当前目录输出emby中的"最爱"的所有项目和指定的合集的项目
